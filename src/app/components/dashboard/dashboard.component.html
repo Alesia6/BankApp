@@ -1,0 +1,19 @@
+<div class="container">
+    <h1>Welcome to you account
+    </h1>
+
+    <div class="card">
+        <p>Account ID: {{ accountId }}</p>
+        <p><strong>Account Balance:</strong> {{ balance }}</p>
+    </div>
+
+    <div class="actions">
+        <h2>Actions</h2>
+        <a routerLink="/withdraw" class="btn btn-action">Withdraw Money</a>
+        <a routerLink="/deposit" class="btn btn-action">Deposit Money</a>
+        <a routerLink="/transactions" class="btn btn-action">View Transactions</a>
+
+    </div>
+
+    <button class="btn btn-logout" (click)="logout()">Logout</button>
+</div>
