@@ -1,0 +1,42 @@
+<a routerLink="/dashboard">Back to Dashboard</a>
+<br>
+<br>
+<div *ngIf="transactions.length === 0; else transactionsTable">
+<p>No transactions found</p>
+
+</div>
+
+<ng-template #transactionsTable>
+    <div>
+        <label>Show last: </label>
+        <a (click)="loadTransactions(5)">5</a>
+        <a (click)="loadTransactions(25)">25</a>
+        <a (click)="loadTransactions(50)">50</a>
+
+    </div>
+    <br>
+
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date & Time</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Balance After</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let transaction of transactions">
+                    <td>{{ transaction.created_at | date:'medium' }}</td>
+                    <td [class]="getTransactionClass(transaction.type)">
+                        {{ transaction.type }}
+                    </td>
+                    <td>{{ transaction.amount | currency }}</td>
+                    <td>{{ transaction.balance_after | currency }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</ng-template>
+
