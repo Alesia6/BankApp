@@ -1,26 +1,33 @@
-import  { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Routes } from "@angular/router";
+import { LoginComponent } from "./components/login/login.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { DepositComponent } from "./components/deposit/deposit.component";
+import { WithdrawComponent } from "./components/withdraw/withdraw.component";
+import { TransactionsComponent } from "./components/transactions/transactions.component";
+import { AuthGuard } from "./guards/auth.guard";
 
-import  { LoginComponent } from './components/login/login.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-
-import { authGuard } from './guards/auth.guard';
-
-const routes: Routes = [
-    { path: '', redirectTo: '/login', pathMatch: 'full'},
-    { path: 'login', component: LoginComponent},
+export const routes: Routes = [
+    { path: '', redirectTo: '/login', pathMatch:'full'},
+    { path: 'login', component: LoginComponent },
     {
         path: 'dashboard',
         component: DashboardComponent,
-        canActivate: [authGuard]
-    }
-]
-
-@NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
-})
-
-
-export class AppRoutingModule { }
-
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'deposit',
+        component: DashboardComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'withdraw',
+        component: WithdrawComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'transactions',
+        component: TransactionsComponent,
+        canActivate: [AuthGuard]
+    },
+    { path: '**', redirectTo: '/login'}
+];
