@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { FormsModule } from "@angular/forms";
 
 @Component({
   selector: 'app-withdraw',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './withdraw.component.html',
-  styleUrl: './withdraw.component.css'
+  styleUrls: ['./withdraw.component.css']
 })
 export class WithdrawComponent {
 

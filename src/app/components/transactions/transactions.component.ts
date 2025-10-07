@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [RouterLink, CommonModule],
   templateUrl: './transactions.component.html',
-  styleUrl: './transactions.component.css'
+  styleUrls: ['./transactions.component.css']
 })
 export class TransactionsComponent implements OnInit {
 
